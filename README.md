@@ -1,38 +1,42 @@
-Role Name
+consul-alerts
 =========
 
-A brief description of the role goes here.
-
-Requirements
-------------
-
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+A role that installs and configures [consul-alerts](https://github.com/AcalephStorage/consul-alerts). This is intended for usage on the [microservices-infrastructure](https://github.com/CiscoCloud/microservices-infrastructure) project.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+## consul_alerts_notifiers
+
+A list of key/value pairs that correspond to [consul-alerts notifiers](https://github.com/AcalephStorage/consul-alerts#notifiers) configuration.
+
+    - { key: "log/enabled", value: "true" }
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+This role depends on [consul-cli](https://github.com/CiscoCloud/consul-cli).
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+This example shows how to enable slack notifications while disabling the text log file.
 
-    - hosts: servers
+    - hosts: role=control
+      vars:
+        consul_alerts_notifiers:
+        - { key: "log/enabled", value: "false" }
+        - { key: "slack/enabled", value: "true" }
+        - { key: "slack/cluster-name", value: "cluster-name" }
+        - { key: "slack/url", value: "webhook_url" }
+        - { key: "slack/channel", value: "#notifications" }
+        - { key: "slack/detailed", value: "true" }
       roles:
-         - { role: username.rolename, x: 42 }
+        - mi-consul-alerts
 
 License
 -------
 
-BSD
+Licensed under the Apache License, Version 2.0 (the "License").
 
-Author Information
-------------------
-
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
