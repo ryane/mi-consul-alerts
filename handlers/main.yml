@@ -1,0 +1,8 @@
+---
+- name: restart consul-alerts
+  sudo: yes
+  command: systemctl restart consul-alerts
+
+- name: reload consul-alerts
+  sudo: yes
+  command: systemctl daemon-reload

@@ -1,0 +1,4 @@
+---
+# defaults file for mi-consul-alerts
+consul_alerts_notifiers:
+  - { key: "log/enabled", value: "true" }
