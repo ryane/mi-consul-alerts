@@ -37,7 +37,7 @@ This example shows how to enable slack notifications while disabling the text lo
 Improvements
 ---------------
 
-* Improve install (perhaps run in a docker container)
+- [ ] Improve install (perhaps run in a docker container)
 
 License
 -------
