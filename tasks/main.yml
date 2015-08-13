@@ -39,7 +39,6 @@
     - restart consul-alerts
   tags:
     - consul-alerts
-    - wtf
 
 - name: enable consul-alerts
   sudo: yes

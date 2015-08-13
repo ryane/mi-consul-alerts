@@ -6,7 +6,7 @@ A role that installs and configures [consul-alerts](https://github.com/AcalephSt
 Role Variables
 --------------
 
-## consul_alerts_notifiers
+### consul_alerts_notifiers
 
 A list of key/value pairs that correspond to [consul-alerts notifiers](https://github.com/AcalephStorage/consul-alerts#notifiers) configuration.
 
@@ -33,6 +33,11 @@ This example shows how to enable slack notifications while disabling the text lo
         - { key: "slack/detailed", value: "true" }
       roles:
         - mi-consul-alerts
+
+Improvements
+---------------
+
+* Improve install (perhaps run in a docker container)
 
 License
 -------
